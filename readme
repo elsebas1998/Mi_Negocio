@@ -1,0 +1,39 @@
+# Sistema "Mi Negocio" - Documentación del Proyecto
+
+Este proyecto es un sistema de facturación llamado "Mi Negocio" que permite registrar y gestionar clientes, incluyendo la posibilidad de agregar múltiples direcciones para cada cliente. Está desarrollado con Java, Spring Boot y PostgreSQL.
+
+## Requisitos del Sistema
+
+- Java 8 o versiones superiores
+- PostgreSQL
+
+## Configuración de la Base de Datos
+
+1. Asegúrate de tener PostgreSQL instalado y en funcionamiento en tu sistema local.
+
+2. Crea una base de datos llamada "mi_negocio_db" en PostgreSQL.
+
+3. Abre el archivo `application.properties` en la carpeta `src/main/resources` y modifica la configuración de la base de datos con tu usuario y contraseña de PostgreSQL:
+
+
+## Modelo de Datos
+
+### Entidad "Cliente"
+
+La entidad "Cliente" representa a los clientes del sistema y tiene los siguientes campos:
+
+- id (Long): Identificador único del cliente.
+- tipoIdentificacion (String): Tipo de identificación del cliente (RUC o Cédula).
+- numeroIdentificacion (String): Número de identificación del cliente.
+- nombres (String): Nombres del cliente.
+- correo (String): Correo electrónico del cliente.
+- numeroCelular (String): Número de celular del cliente.
+
+### Entidad "DireccionCliente"
+
+La entidad "DireccionCliente" representa las direcciones de los clientes y tiene los siguientes campos:
+
+- id (Long): Identificador único de la dirección.
+- provincia (String): Provincia de la dirección.
+- ciudad (String): Ciudad de la dirección.
+- direccion (String): Dirección del cliente.
