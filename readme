@@ -4,7 +4,7 @@ Este proyecto es un sistema de facturación llamado "Mi Negocio" que permite reg
 
 ## Requisitos del Sistema
 
-- Java 8 o versiones superiores
+- Java 11 
 - PostgreSQL
 
 ## Configuración de la Base de Datos
@@ -15,6 +15,7 @@ Este proyecto es un sistema de facturación llamado "Mi Negocio" que permite reg
 
 3. Abre el archivo `application.properties` en la carpeta `src/main/resources` y modifica la configuración de la base de datos con tu usuario y contraseña de PostgreSQL:
 
+##############################################################
 
 ## Modelo de Datos
 
@@ -37,3 +38,61 @@ La entidad "DireccionCliente" representa las direcciones de los clientes y tiene
 - provincia (String): Provincia de la dirección.
 - ciudad (String): Ciudad de la dirección.
 - direccion (String): Dirección del cliente.
+
+##############################################################
+
+Uso de la API
+La API proporciona los siguientes endpoints:
+
+POST /api/clientes: Crea un nuevo cliente. Debe proporcionar los detalles del cliente en el cuerpo de la solicitud en formato JSON.
+
+GET /api/clientes: Obtiene una lista de todos los clientes registrados.
+
+GET /api/clientes/{id}: Obtiene un cliente específico por su ID.
+
+PUT /api/clientes/{id}: Actualiza los detalles de un cliente existente. Debe proporcionar los detalles actualizados en el cuerpo de la solicitud en formato JSON.
+
+DELETE /api/clientes/{id}: Elimina un cliente existente por su ID.
+
+POST /api/direccionesN/{clienteId}: Agrega una nueva dirección al cliente especificado por su ID. Debe proporcionar los detalles de la dirección en el cuerpo de la solicitud en formato JSON.
+
+##############################################################
+Ejemplo de solicitud y respuesta
+Crear un nuevo cliente:
+
+{
+  "tipoIdentificacion": "CEDULA",
+  "numeroIdentificacion": "0000000000",
+  "nombres": "Sebas",
+  "correo": "sebas@example.com",
+  "numeroCelular": "0987654321",
+  "direccionMatriz": "Calle Principal 123"
+}
+
+##############################################################
+Actualizar los detalles del cliente:
+
+{
+  "tipoIdentificacion": "PASAPORTE",
+  "numeroIdentificacion": "000000000",
+  "nombres": "Juanito Perez",
+  "correo": "juanito@example.com",
+  "numeroCelular": "0999999999",
+  "direccionMatriz": "Calle Secundaria 456"
+}
+
+##############################################################
+Agregar una nueva dirección al cliente:
+
+{
+  "provincia": "Pichincha",
+  "ciudad": "Quito",
+  "direccion": "Av. Principal 789"
+}
+
+##############################################################
+
+NOTAS
+Tener en cuenta que existen ciertas validaciones para el numero de identificacion, ya que debe ser uno ecuatoriano,
+asi como que no pueden existir repetidos, para el correo lo mismo debe ser uno valido y unico para cada usuarios y 
+adicional para las provincias deben de ser provincias validas de ecuador. 
